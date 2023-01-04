@@ -8,14 +8,7 @@ export const FormSection = ({
 }) => {
   return (
     <div>
-      <NameInput
-        formDispatch={formDispatch}
-        form={form}
-      />
-      <Conditions
-        formDispatch={formDispatch}
-        form={form}
-      />
+      <NameInput />
     </div>
   )
 }

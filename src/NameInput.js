@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { formContext } from "./App";
 
-export const NameInput = ({
-   form,
-   formDispatch
-  }) => {
+export const NameInput = () => {
+  const { numFilled, isSubmitting, setForm } = useContext(formContext);
 
   const [alreadyFilled, setAlreadyFilled] = useState(false);
 
   const updateFilled = () => {
+
     if(!alreadyFilled) {
       setAlreadyFilled(true);
-      formDispatch({ type: 'incrementFilled' });
+      setForm({ numFilled: numFilled + 1, isSubmitting})
     }
   }
 
@@ -19,8 +19,8 @@ export const NameInput = ({
       Question 1/3 <br />
       Enter Your Name:
       <input
-       disabled={form.isSubmitting ? "disabled" : ""}
-       onChange={updateFilled}
+      disabled={isSubmitting ? "disabled" : ""}
+      onChange={updateFilled}
       />
     </div>
   )
