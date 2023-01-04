@@ -1,9 +1,8 @@
 import { useState } from "react";
 
 export const NameInput = ({
-    isDisabled = false,
-    numFilled,
-    setNumFilled
+   form,
+   formDispatch
   }) => {
 
   const [alreadyFilled, setAlreadyFilled] = useState(false);
@@ -11,7 +10,7 @@ export const NameInput = ({
   const updateFilled = () => {
     if(!alreadyFilled) {
       setAlreadyFilled(true);
-      setNumFilled(numFilled + 1);
+      formDispatch({ type: 'incrementFilled' });
     }
   }
 
@@ -20,7 +19,7 @@ export const NameInput = ({
       Question 1/3 <br />
       Enter Your Name:
       <input
-       disabled={isDisabled ? "disabled" : ""}
+       disabled={form.isSubmitting ? "disabled" : ""}
        onChange={updateFilled}
       />
     </div>

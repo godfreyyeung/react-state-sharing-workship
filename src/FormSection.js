@@ -3,21 +3,18 @@ import { NameInput } from './NameInput';
 import { Conditions } from './Conditions';
 
 export const FormSection = ({
-  isDisabled = false,
-  numFilled,
-  setNumFilled
+  form,
+  formDispatch
 }) => {
   return (
     <div>
       <NameInput
-        isDisabled={isDisabled}
-        numFilled={numFilled}
-        setNumFilled={setNumFilled}
+        formDispatch={formDispatch}
+        form={form}
       />
       <Conditions
-        isDisabled={isDisabled}
-        numFilled={numFilled}
-        setNumFilled={setNumFilled}
+        formDispatch={formDispatch}
+        form={form}
       />
     </div>
   )

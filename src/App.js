@@ -1,32 +1,38 @@
 import './App.css';
-import { useState } from "react";
+import { useState, useReducer } from "react";
 import { FormSection } from './FormSection';
+import { formReducer } from './formReducer';
 
 function App() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [numFilled, setNumFilled] = useState(0);
+  const [form, formDispatch] = useReducer(formReducer, {
+    isSubmitting: false,
+    numFilled: 0
+  });
 
   const onSubmit = () => {
-    setIsSubmitting(true);
+    formDispatch({ type: 'toggleIsSubmitting' });
 
     setTimeout(() => {
-      setIsSubmitting(false);
+      formDispatch({ type: 'toggleIsSubmitting' });
     }, 1000);
   }
 
   return (
     <div className="App">
-      Questions Filled out: {numFilled} / 3 
+      Questions Filled out: {form.numFilled} / 3 
       <br />
       <button onClick={onSubmit}> Submit </button>
       <br />
       <FormSection
-        isDisabled={isSubmitting}
-        numFilled={numFilled}
-        setNumFilled={setNumFilled}
+        formDispatch={formDispatch}
+        form={form}
       />
     </div>
   );
 }
+
+// isDisabled={isSubmitting}
+// numFilled={numFilled}
+// setNumFilled={setNumFilled}
 
 export default App;

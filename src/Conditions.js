@@ -1,11 +1,11 @@
-export const Conditions = ({ isDisabled = false }) => {
+export const Conditions = ({ form, formDispatch}) => {
   return (
     <div>
       Check box to accept condition 1 
-      <input disabled={isDisabled ? "disabled" : ""} type="checkbox" />
+      <input disabled={form.isSubmitting ? "disabled" : ""} type="checkbox" />
       <br />
       Check box to accept condition 2
-      <input disabled={isDisabled ? "disabled" : ""} type="checkbox" />
+      <input disabled={form.isSubmitting ? "disabled" : ""} type="checkbox" />
     </div>
   )
 }
