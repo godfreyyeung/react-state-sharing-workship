@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 export const NameInput = ({
-   form,
    formDispatch
   }) => {
 
@@ -16,10 +15,8 @@ export const NameInput = ({
 
   return (
     <div>
-      Question 1/3 <br />
       Enter Your Name:
       <input
-       disabled={form.isSubmitting ? "disabled" : ""}
        onChange={updateFilled}
       />
     </div>
