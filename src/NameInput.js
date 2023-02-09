@@ -17,7 +17,6 @@ export const NameInput = ({
 
   return (
     <div>
-      Question 1/3 <br />
       Enter Your Name:
       <input
        disabled={isDisabled ? "disabled" : ""}
